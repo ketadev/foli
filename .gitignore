@@ -17,8 +17,3 @@ captures
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
 node_modules/
-
-# Planning artifacts kept outside the initial project history
-/foli-prd.md
-/design/tokens/design-tokens.json
-/assets/
