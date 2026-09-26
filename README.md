@@ -1,57 +1,57 @@
 # Foli
 
-**Leer un poco hoy hace más fácil volver mañana.** Foli es una aplicación móvil para Android e iOS que ayuda a construir un hábito de lectura con sesiones breves, metas de páginas elegidas por la persona y progreso visible. Cuando una lectura deja algo valioso, también permite guardar una idea y convertirla en una acción.
+**Reading a little today makes it easier to come back tomorrow.** Foli is a mobile app for Android and iOS that helps people build a reading habit through short sessions, self-chosen page goals, and visible progress. When a book sparks a useful thought, readers can also save an idea and turn it into an action.
 
-## ¿Por qué Foli?
+## Why Foli?
 
-Empezar a leer suele costar más que leer unas páginas. Los libros pendientes se acumulan, el avance pasa inadvertido y un registro demasiado exigente convierte el hábito en otra tarea. Foli busca acortar el camino entre **«quiero leer»** y **«estoy leyendo»**: abrir la app, continuar un libro, registrar el avance y tener una razón amable para regresar al día siguiente.
+Getting started is often harder than reading a few pages. Books pile up, progress goes unnoticed, and too much tracking can make reading feel like another chore. Foli aims to shorten the path from **“I want to read”** to **“I'm reading”**: open the app, pick up a book, record your progress, and have a gentle reason to return the next day.
 
-La prioridad es la constancia, no el tiempo dentro de la aplicación. La experiencia se plantea como personal, tranquila y privada, sin rankings ni actividad pública.
+The priority is consistency, not time spent in the app. The experience is designed to be personal, calm, and private, with no rankings or public activity.
 
-## Características principales
+## Key features
 
-### 📚 Tu biblioteca, a tu ritmo
+### 📚 Your library, your pace
 
-Agrega libros manualmente o búscalos en un catálogo. Organiza tus pendientes y mantén hasta dos lecturas activas. Para cada libro, elige si quieres *solo leer*, *leer y recordar* o *leer y aplicar*.
+Add books manually or find them in a catalog. Organize your reading list and keep up to two books active at a time. For each book, choose whether you want to *just read*, *read and remember*, or *read and apply*.
 
-### 📖 Sesiones fáciles de empezar
+### 📖 Reading sessions that are easy to start
 
-Fija una meta de páginas, lee sin distracciones y registra hasta dónde llegaste. Al cerrar la sesión, verás de inmediato cuánto avanzaste en el libro.
+Set a page goal, read without distractions, and record where you stopped. When you finish a session, you immediately see how much progress you've made in the book.
 
-### 🌱 Motivación para volver
+### 🌱 Motivation to return
 
-Sigue tu constancia con rachas, pequeños logros y recordatorios respetuosos. Si interrumpes una racha, podrás recuperarla sin que volver a leer se sienta como un castigo.
+Build consistency with streaks, small achievements, and considerate reminders. If you break a streak, you can recover it without making your return to reading feel like a punishment.
 
-### 💭 Ideas que puedes conservar
+### 💭 Ideas worth keeping
 
-Después de leer, guarda una idea o reflexión si algo merece recordarse. Este paso es opcional: tu sesión ya estará completada.
+After reading, save an idea or reflection if something stands out. This step is optional: your reading session is already complete.
 
-### ⚡ De una idea a una acción
+### ⚡ From an idea to an action
 
-Cuando quieras aplicar lo aprendido, convierte una idea en una acción concreta y sigue su resultado. Una sugerencia de IA editable podrá ayudarte a definirla, sin decidir por ti.
+When you want to put something you've learned into practice, turn an idea into a concrete action and track the outcome. An editable AI suggestion may help you define it, while you make the final decision.
 
-El recorrido principal sigue siendo simple: **elegir libro → fijar una meta → leer → registrar el avance → volver a leer**.
+The core journey stays simple: **choose a book → set a goal → read → record your progress → come back to read again**.
 
-## Tecnología y arquitectura
+## Technology and architecture
 
-Foli parte de **Kotlin Multiplatform** para compartir lógica entre Android e iOS y de **Compose Multiplatform + Material 3** para la interfaz. La propuesta del MVP organiza el código en módulos de funciones (`library`, `reading`, `streaks`, `ideas`, `actions`) y módulos centrales para modelos, datos, base de datos, diseño y adaptadores de plataforma. `shared` ensambla la navegación y las dependencias; `androidApp` e `iosApp` son las entradas nativas.
+Foli uses **Kotlin Multiplatform** to share logic between Android and iOS, and **Compose Multiplatform + Material 3** for the UI. The proposed MVP architecture organizes code into feature modules (`library`, `reading`, `streaks`, `ideas`, `actions`) and core modules for models, data, the database, design, and platform adapters. `shared` assembles navigation and dependencies; `androidApp` and `iosApp` are the native entry points.
 
-| Necesidad | Elección definida |
+| Need | Planned choice |
 | --- | --- |
-| Estado y tareas asíncronas | ViewModel multiplataforma, Coroutines y Flow |
-| Navegación | Navigation Compose multiplataforma con rutas tipadas |
-| Datos locales | Room KMP sobre SQLite; DataStore Preferences para ajustes pequeños |
-| Catálogo y red | Google Books detrás de un contrato propio; Ktor Client y Kotlin Serialization |
-| Portadas | Coil 3 |
-| Dependencias | Koin, con definiciones compartidas y adaptadores por plataforma |
-| Recordatorios | Notificaciones locales mediante adaptadores nativos |
-| Diseño | Tokens en [`design/tokens/design-tokens.json`](design/tokens/design-tokens.json) |
+| State and asynchronous work | Multiplatform ViewModel, Coroutines, and Flow |
+| Navigation | Multiplatform Navigation Compose with typed routes |
+| Local data | Room KMP with SQLite; DataStore Preferences for small settings |
+| Catalog and networking | Google Books behind an app-owned interface; Ktor Client and Kotlin Serialization |
+| Book covers | Coil 3 |
+| Dependency injection | Koin, with shared definitions and platform-specific adapters |
+| Reminders | Local notifications through native adapters |
+| Design | Tokens in [`design/tokens/design-tokens.json`](design/tokens/design-tokens.json) |
 
-> **Estado del repositorio:** actualmente solo están configurados `androidApp` y `shared`, con la pantalla inicial de la plantilla. Los módulos, flujos y dependencias de la tabla describen la arquitectura **propuesta**, no funciones ya terminadas.
+> **Repository status:** only `androidApp` and `shared` are configured today, with the starter template screen. The modules, flows, and dependencies listed above describe the **proposed** architecture, not completed features.
 
-Las decisiones y límites completos están en la [arquitectura](docs/architecture.md); el problema, los flujos y el alcance del producto están en el [PRD](docs/foli-prd.md).
+For full decisions and constraints, see the [architecture document](docs/architecture.md). For the product problem, flows, and scope, see the [PRD](docs/foli-prd.md).
 
-## Ejecutar el proyecto actual
+## Run the current project
 
-- **Android:** `./gradlew :androidApp:assembleDebug` o ejecutar `androidApp` desde el IDE.
-- **iOS:** abrir [`iosApp/iosApp.xcodeproj`](iosApp/iosApp.xcodeproj) en Xcode y ejecutar la app.
+- **Android:** run `./gradlew :androidApp:assembleDebug` or launch `androidApp` from your IDE.
+- **iOS:** open [`iosApp/iosApp.xcodeproj`](iosApp/iosApp.xcodeproj) in Xcode and run the app.
