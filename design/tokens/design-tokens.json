@@ -1,0 +1,420 @@
+{
+  "$meta": {
+    "name": "Foli",
+    "version": 1,
+    "source": "Foli Design System (wireframes)",
+    "themes": {
+      "day": "Día",
+      "night": "Noche"
+    },
+    "units": "px (dp/sp en Android)"
+  },
+  "color": {
+    "day": {
+      "surface-100": "#F7F2E9",
+      "surface-200": "#FFFDF8",
+      "surface-300": "#F3EEE3",
+      "surface-celebrate": "#FBF3E4",
+      "line": "#EDE5D6",
+      "line-strong": "#D9D0BF",
+      "ink": "#27332C",
+      "ink-muted": "#56625B",
+      "ink-subtle": "#66716A",
+      "primary": "#4F7556",
+      "primary-press": "#3C5E43",
+      "on-primary": "#FFFDF8",
+      "moss-700": "#3C5E43",
+      "leaf-400": "#7FA57A",
+      "leaf-300": "#A9C2A0",
+      "leaf-100": "#EEF3EC",
+      "border-leaf": "#C9D6C4",
+      "sky-100": "#DCE8E6",
+      "hill-200": "#C9DBC3",
+      "butter-300": "#F5DFA0",
+      "peach-100": "#FBE6D6",
+      "peach-300": "#F3C9A9",
+      "peach-500": "#E8A07A",
+      "ember-700": "#8A4A2B",
+      "clay-400": "#D98B6A",
+      "clay-300": "#E39E7E",
+      "blush": "#F3A98A",
+      "bark": "#8A6A4F",
+      "lavender-100": "#F1EDF6",
+      "lavender-500": "#8C7DB5",
+      "lavender-700": "#5B4F78",
+      "rest-100": "#EFEAF3"
+    },
+    "night": {
+      "surface-100": "#1F3438",
+      "surface-200": "#26403F",
+      "surface-300": "#2F4B4F",
+      "surface-celebrate": "#1F3438",
+      "line": "#34575A",
+      "line-strong": "#4A6B6E",
+      "ink": "#F5ECD7",
+      "ink-muted": "#B9C8C2",
+      "ink-subtle": "#9FB2AB",
+      "primary": "#F5DFA0",
+      "primary-press": "#D9BD72",
+      "on-primary": "#27332C",
+      "moss-700": "#C9DBC3",
+      "leaf-400": "#8FB88A",
+      "leaf-300": "#A9C2A0",
+      "leaf-100": "#2B474A",
+      "border-leaf": "#4A6B6E",
+      "sky-100": "#1F3438",
+      "hill-200": "#2F4B4F",
+      "butter-300": "#F5DFA0",
+      "peach-100": "#4A3A33",
+      "peach-300": "#F3C9A9",
+      "peach-500": "#E8A07A",
+      "ember-700": "#F3C9A9",
+      "clay-400": "#C98062",
+      "clay-300": "#D98B6A",
+      "blush": "#F3A98A",
+      "bark": "#8A6A4F",
+      "lavender-100": "#3A3650",
+      "lavender-500": "#B3A7D6",
+      "lavender-700": "#D6CFE6",
+      "rest-100": "#2A2C44"
+    }
+  },
+  "colorUsage": {
+    "surface-100": "Fondo de pantalla. De día, crema cálido; de noche (sesión de lectura), azul petróleo.",
+    "surface-200": "Tarjetas, filas, campos y barra de navegación sobre surface-100.",
+    "surface-300": "Paneles hundidos dentro de una tarjeta (meta del día, días pendientes).",
+    "surface-celebrate": "Fondo de las pantallas de celebración, un punto más cálido que surface-100.",
+    "line": "Divisores, borde superior de la barra de pestañas, labio de 1px bajo tarjetas y pista de las barras de progreso.",
+    "line-strong": "Asa de las hojas inferiores y borde de botones secundarios neutros.",
+    "ink": "Texto principal y títulos sobre cualquier superficie.",
+    "ink-muted": "Subtítulos y texto de apoyo sobre surface-100 y surface-200.",
+    "ink-subtle": "Metadatos, contadores y pestañas inactivas. Mínimo 12px.",
+    "primary": "Botón principal y estado seleccionado. Uno por pantalla. De noche pasa a mantequilla para brillar como la luna.",
+    "primary-press": "Labio inferior del botón principal (sombra sólida de 5px) y estado presionado.",
+    "on-primary": "Texto e iconos sobre primary.",
+    "moss-700": "Texto de enlaces, etiquetas en mayúsculas y pestaña activa.",
+    "leaf-400": "Relleno de progreso, días cumplidos, hoja principal de la planta y borde de elección seleccionada.",
+    "leaf-300": "Hoja clara de la planta, colina del frente y días activos en recordatorios.",
+    "leaf-100": "Paneles de acción en curso, avisos amables e insignias de 'Solo leer'.",
+    "border-leaf": "Borde de botones secundarios sobre fondos verdes.",
+    "sky-100": "Cielo de las ilustraciones.",
+    "hill-200": "Colina lejana de las ilustraciones.",
+    "butter-300": "Sol, luna, brillo del avance de hoy y relleno del icono de pestaña activa.",
+    "peach-100": "Fondo de la píldora de racha, acción terminada e insignia 'Leer y aplicar'.",
+    "peach-300": "Flores y pétalos, días de racha anteriores.",
+    "peach-500": "La llama de la racha y el día de hoy cumplido. Solo decorativo, nunca texto.",
+    "ember-700": "Texto sobre peach-100 (racha, 'Leer y aplicar').",
+    "clay-400": "Maceta de la planta.",
+    "clay-300": "Borde de la maceta.",
+    "blush": "Mejillas de la planta (al 75%).",
+    "bark": "Troncos de los árboles de libros terminados.",
+    "lavender-100": "Tarjeta de sugerencia de IA e insignia 'Leer y recordar'. La IA siempre se ve discreta.",
+    "lavender-500": "Chispa de la sugerencia y manta de la planta dormida.",
+    "lavender-700": "Texto y botón sobre lavender-100.",
+    "rest-100": "Fondo de la pantalla de racha en pausa: descanso, no fracaso."
+  },
+  "typography": {
+    "fontFamilies": {
+      "display": {
+        "family": "Young Serif",
+        "fallback": [
+          "Georgia",
+          "serif"
+        ],
+        "source": "Google Fonts"
+      },
+      "sans": {
+        "family": "Nunito",
+        "fallback": [
+          "Trebuchet MS",
+          "system-ui",
+          "sans-serif"
+        ],
+        "weights": [
+          400,
+          600,
+          700,
+          800
+        ],
+        "source": "Google Fonts"
+      }
+    },
+    "styles": {
+      "display-xl": {
+        "fontFamily": "display",
+        "fontSize": 36,
+        "lineHeight": 40,
+        "fontWeight": 400,
+        "usage": "Celebraciones y bienvenida."
+      },
+      "display-l": {
+        "fontFamily": "display",
+        "fontSize": 30,
+        "lineHeight": 35,
+        "fontWeight": 400,
+        "usage": "Título de pestaña (Biblioteca, Jardín, Ideas)."
+      },
+      "display-m": {
+        "fontFamily": "display",
+        "fontSize": 27,
+        "lineHeight": 31,
+        "fontWeight": 400,
+        "usage": "Pregunta principal de una pantalla."
+      },
+      "display-s": {
+        "fontFamily": "display",
+        "fontSize": 24,
+        "lineHeight": 28,
+        "fontWeight": 400,
+        "usage": "Título junto al botón de volver."
+      },
+      "quote": {
+        "fontFamily": "display",
+        "fontSize": 18,
+        "lineHeight": 26,
+        "fontWeight": 400,
+        "usage": "Ideas citadas por el lector."
+      },
+      "numeral": {
+        "fontFamily": "display",
+        "fontSize": 64,
+        "lineHeight": 64,
+        "fontWeight": 400,
+        "usage": "Contadores grandes: página, tiempo de sesión (48px)."
+      },
+      "title": {
+        "fontFamily": "sans",
+        "fontSize": 18,
+        "lineHeight": 24,
+        "fontWeight": 800,
+        "usage": "Título de libro en la tarjeta principal."
+      },
+      "body-l": {
+        "fontFamily": "sans",
+        "fontSize": 17,
+        "lineHeight": 25,
+        "fontWeight": 400,
+        "usage": "Texto de introducción bajo un display."
+      },
+      "body": {
+        "fontFamily": "sans",
+        "fontSize": 16,
+        "lineHeight": 22,
+        "fontWeight": 400,
+        "usage": "Texto corrido, ideas y campos."
+      },
+      "label": {
+        "fontFamily": "sans",
+        "fontSize": 15,
+        "lineHeight": 20,
+        "fontWeight": 800,
+        "usage": "Títulos de filas y tarjetas pequeñas."
+      },
+      "button": {
+        "fontFamily": "sans",
+        "fontSize": 17,
+        "lineHeight": 20,
+        "fontWeight": 800,
+        "usage": "Botón principal. Botones medianos: 15px."
+      },
+      "caption": {
+        "fontFamily": "sans",
+        "fontSize": 13,
+        "lineHeight": 18,
+        "fontWeight": 600,
+        "usage": "Metadatos bajo un título."
+      },
+      "overline": {
+        "fontFamily": "sans",
+        "fontSize": 13,
+        "lineHeight": 16,
+        "fontWeight": 800,
+        "letterSpacing": "0.02em",
+        "textTransform": "uppercase",
+        "usage": "Encabezado en mayúsculas de un panel. Nunca más de una línea."
+      },
+      "micro": {
+        "fontFamily": "sans",
+        "fontSize": 12,
+        "lineHeight": 16,
+        "fontWeight": 700,
+        "usage": "Etiquetas de la barra de pestañas y logros. El mínimo."
+      }
+    }
+  },
+  "spacing": {
+    "space-1": 4,
+    "space-2": 8,
+    "space-3": 12,
+    "space-4": 16,
+    "space-5": 20,
+    "space-6": 24,
+    "space-8": 32,
+    "space-10": 40,
+    "space-14": 56
+  },
+  "spacingUsage": {
+    "space-1": "Entre título y subtítulo apretados.",
+    "space-2": "Entre botones en fila y chips.",
+    "space-3": "Relleno de chips, huecos entre opciones.",
+    "space-4": "Hueco entre bloques de una pantalla y relleno de filas.",
+    "space-5": "Relleno interior de tarjetas.",
+    "space-6": "Margen lateral de pantalla.",
+    "space-8": "Separación antes de la acción principal.",
+    "space-10": "Margen inferior sobre el borde del teléfono.",
+    "space-14": "Margen superior bajo la barra de estado del sistema."
+  },
+  "radius": {
+    "radius-sm": 6,
+    "radius-md": 12,
+    "radius-lg": 16,
+    "radius-xl": 20,
+    "radius-2xl": 24,
+    "radius-3xl": 28,
+    "radius-sheet": 36,
+    "radius-pill": 999
+  },
+  "radiusUsage": {
+    "radius-sm": "Portadas de libro.",
+    "radius-md": "Casillas de días y chips pequeños.",
+    "radius-lg": "Paneles dentro de tarjetas.",
+    "radius-xl": "Filas, campos y tarjetas secundarias.",
+    "radius-2xl": "Tarjetas de sección.",
+    "radius-3xl": "Tarjeta principal del libro actual.",
+    "radius-sheet": "Esquinas superiores de las hojas inferiores.",
+    "radius-pill": "Botones, píldoras y botones de icono."
+  },
+  "size": {
+    "screen-w": 390,
+    "screen-h": 844,
+    "tap-min": 44,
+    "button-lg": 58,
+    "button-md": 50,
+    "choice-h": 76,
+    "pill-h": 40,
+    "tabbar-h": 84,
+    "icon-md": 24,
+    "progress-h": 8
+  },
+  "sizeUsage": {
+    "screen-w": "Ancho de diseño del teléfono.",
+    "screen-h": "Alto de diseño del teléfono.",
+    "tap-min": "Área táctil mínima: botones de icono, chips, filas.",
+    "button-lg": "Alto del botón principal de pantalla.",
+    "button-md": "Alto de botones en pareja dentro de tarjetas.",
+    "choice-h": "Alto de las opciones grandes (meta de páginas, momento del día).",
+    "pill-h": "Alto de la píldora de racha y del botón de campana.",
+    "tabbar-h": "Alto de la barra de pestañas con zona segura.",
+    "icon-md": "Iconos de pestaña. Iconos en línea: 20px.",
+    "progress-h": "Grosor de la barra de progreso (6px en tarjetas pequeñas)."
+  },
+  "border": {
+    "width": {
+      "hairline": 1
+    },
+    "color": {
+      "default": "line",
+      "strong": "line-strong",
+      "leaf": "border-leaf",
+      "choiceSelected": "leaf-400"
+    },
+    "note": "Colores referencian claves de color.<theme>. Botones secundarios: 1px border-leaf / line-strong; elección seleccionada: leaf-400."
+  },
+  "shadow": {
+    "shadow-lip": {
+      "usage": "Labio sólido bajo el botón principal: se siente presionable. Sin desenfoque.",
+      "day": {
+        "css": "0 5px 0 #3C5E43",
+        "layers": [
+          {
+            "x": 0,
+            "y": 5,
+            "blur": 0,
+            "spread": 0,
+            "color": "#3C5E43"
+          }
+        ]
+      },
+      "night": {
+        "css": "0 5px 0 #D9BD72",
+        "layers": [
+          {
+            "x": 0,
+            "y": 5,
+            "blur": 0,
+            "spread": 0,
+            "color": "#D9BD72"
+          }
+        ]
+      }
+    },
+    "shadow-hairline": {
+      "usage": "Separación mínima de filas y campos.",
+      "day": {
+        "css": "0 1px 0 #EDE5D6",
+        "layers": [
+          {
+            "x": 0,
+            "y": 1,
+            "blur": 0,
+            "spread": 0,
+            "color": "#EDE5D6"
+          }
+        ]
+      },
+      "night": {
+        "css": "0 1px 0 #34575A",
+        "layers": [
+          {
+            "x": 0,
+            "y": 1,
+            "blur": 0,
+            "spread": 0,
+            "color": "#34575A"
+          }
+        ]
+      }
+    },
+    "shadow-card": {
+      "usage": "Solo la tarjeta principal y avisos flotantes.",
+      "day": {
+        "css": "0 1px 0 #EDE5D6, 0 12px 28px rgba(79,97,80,0.08)",
+        "layers": [
+          {
+            "x": 0,
+            "y": 1,
+            "blur": 0,
+            "spread": 0,
+            "color": "#EDE5D6"
+          },
+          {
+            "x": 0,
+            "y": 12,
+            "blur": 28,
+            "spread": 0,
+            "color": "rgba(79,97,80,0.08)"
+          }
+        ]
+      },
+      "night": {
+        "css": "0 1px 0 #34575A, 0 12px 28px rgba(0,0,0,0.25)",
+        "layers": [
+          {
+            "x": 0,
+            "y": 1,
+            "blur": 0,
+            "spread": 0,
+            "color": "#34575A"
+          },
+          {
+            "x": 0,
+            "y": 12,
+            "blur": 28,
+            "spread": 0,
+            "color": "rgba(0,0,0,0.25)"
+          }
+        ]
+      }
+    }
+  }
+}
