@@ -13,10 +13,15 @@ Make `AGENTS.md` the single source of repository instructions and reduce `CLAUDE
 
 ## Tasks
 - [x] AG-1: Update `AGENTS.md` and replace duplicated `CLAUDE.md` instructions with a pointer. Acceptance: facts match current config, requested policies are explicit, references exist. Checks: inspect diff, verify paths/versions/commands.
-- [ ] AG-2: Commit the verified documentation as one Conventional Commit. Checks: clean scope, commit identity recorded, native RDD assessed per project policy.
+- [x] AG-2: Commit the verified documentation as one Conventional Commit. Checks: clean scope, commit identity recorded, native RDD assessed per project policy.
 
 ## Progress
 AG-1 verified with `git diff --check`, config/path checks, and direct documentation review. No Kotlin source changed; Gradle checks not applicable. Branch: `codex/agent-guidelines` from synchronized `main` at `06fdf69`.
 
+## Commit and review
+- Work unit: `6935b63` (`docs: centralize agent guidelines`); rollback boundary: `AGENTS.md`, `CLAUDE.md`, and this task document.
+- Functional check: documentation diff, referenced paths, and version/config values verified. Runtime harness: N/A (documentation-only). Gradle checks skipped because no Kotlin code changed.
+- Native RDD assessment: medium, `under_budget` (131 changed lines); review not due.
+
 ## Next step
-Commit the documentation work unit and record its identity and RDD outcome.
+Await user decision on pushing or opening a PR; no remote operation authorized.
