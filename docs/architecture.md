@@ -78,6 +78,14 @@ En Ktor se usa un motor compatible con cada plataforma, por ejemplo OkHttp en An
 
 El archivo [`design/tokens/design-tokens.json`](../design/tokens/design-tokens.json) es la fuente de los colores de día y noche, tipografía, espacios y radios. `core:designsystem` los traduce a tipos y componentes Compose. No se debe leer ese JSON en cada pantalla durante la ejecución.
 
+### Sistema de diseño y tokens
+
+Los tokens de `design/tokens/design-tokens.json` se traducen a mano a valores Kotlin compilados dentro de `core:designsystem` (`FoliColors`, `FoliSpacing`, `FoliRadius`, `FoliSize`, `FoliTypography`): paletas de día y noche como `Color`, espacios y radios como `Dp`, y estilos tipográficos como `TextStyle`. El módulo no depende de un lector de JSON ni de recursos empaquetados; el archivo JSON sigue siendo la fuente de diseño, no un recurso que la app lea en tiempo de ejecución. Una prueba en `core/designsystem/src/commonTest` compara una muestra representativa de esos valores compilados con el JSON.
+
+El composable `FoliTheme` (en `core/designsystem`) construye el `ColorScheme` y la `Typography` de Material 3 a partir de esas paletas según el tema día/noche, y expone los tokens propios de Foli que no tienen un slot directo en `ColorScheme` (por ejemplo `leaf400` o `peach500`) a través de `FoliTheme.colors`. `shared/src/commonMain/kotlin/com/ketadev/foli/App.kt` envuelve la pantalla inicial con `FoliTheme` en lugar de `MaterialTheme` directo.
+
+Las tipografías del JSON, **Young Serif** (familia `display`) y **Nunito** (familia `sans`), no están empaquetadas todavía: no hay archivos de fuente ni licencia confirmada en este repositorio. Mientras tanto, `FoliTypography` usa `FontFamily.Serif` y `FontFamily.SansSerif` como alternativas explícitas, documentadas en el KDoc del archivo. Agregar las fuentes reales más adelante solo requiere cambiar esas dos referencias.
+
 ### Decisión sobre inyección de dependencias
 
 **Koin es la librería de inyección de dependencias del MVP**, desde las primeras funciones. Cada clase declara sus dependencias por constructor. Los módulos `core` y `feature` aportan definiciones propias; `shared` reúne esas definiciones y arranca Koin una sola vez desde la entrada de cada plataforma. Los objetos que requieren `Context` u otras API nativas se definen en Android o iOS y se exponen mediante contratos compartidos. Las pantallas obtienen sus ViewModels del grafo de Koin.
