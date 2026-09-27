@@ -47,7 +47,7 @@ Foli uses **Kotlin Multiplatform** to share logic between Android and iOS, and *
 | Reminders | Local notifications through native adapters |
 | Design | Tokens in [`design/tokens/design-tokens.json`](design/tokens/design-tokens.json) |
 
-> **Repository status:** only `androidApp` and `shared` are configured today, with the starter template screen. The modules, flows, and dependencies listed above describe the **proposed** architecture, not completed features.
+> **Repository status:** `androidApp`, `shared`, and the five `core` foundation modules are configured. Feature modules and product flows remain proposed.
 
 For full decisions and constraints, see the [architecture document](docs/architecture.md). For the product problem, flows, and scope, see the [PRD](docs/foli-prd.md).
 
@@ -55,3 +55,12 @@ For full decisions and constraints, see the [architecture document](docs/archite
 
 - **Android:** run `./gradlew :androidApp:assembleDebug` or launch `androidApp` from your IDE.
 - **iOS:** open [`iosApp/iosApp.xcodeproj`](iosApp/iosApp.xcodeproj) in Xcode and run the app.
+
+## Quality checks and tests
+
+- `./gradlew ktlintCheck` checks Kotlin formatting; use `./gradlew ktlintFormat` to format code intentionally.
+- `./gradlew detekt` runs static analysis across the Kotlin modules.
+- `./gradlew :shared:testAndroidHostTest` runs shared Android host tests, which can use MockK. Common and iOS tests use `kotlin.test`; MockK is not available in those source sets.
+- `./gradlew :shared:iosSimulatorArm64Test` runs shared iOS simulator tests on a configured macOS host.
+
+The lint and static-analysis tasks report existing source violations; adding the tools does not silently baseline or suppress those findings.
