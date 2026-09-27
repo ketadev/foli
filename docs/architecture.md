@@ -92,6 +92,16 @@ Las tipografías del JSON, **Young Serif** (familia `display`) y **Nunito** (fam
 
 Mantener los módulos de Koin pequeños y alineados con los módulos Gradle, sin usar el contenedor como localizador global de servicios dentro de la lógica de dominio. Registrar y verificar el grafo para Android y el simulador iOS al implementar la primera función. La [guía oficial de Koin para KMP](https://insert-koin.io/docs/reference/koin-core/kmp-setup/) documenta soporte para ambas plataformas; la versión concreta se fijará en `gradle/libs.versions.toml` al agregar las dependencias.
 
+### Arranque de Koin propiedad de cada plataforma nativa
+
+FOLI-00 implementa el arranque de Koin desde la entrada nativa de cada plataforma, no desde `shared`: la `Application` de Android (`FoliApplication.onCreate`) y el inicializador `@main App.init()` de SwiftUI son los únicos dueños del arranque, porque una `Activity` o una vista SwiftUI pueden recrearse varias veces por proceso mientras que la entrada de aplicación se ejecuta una sola vez. `shared/src/commonMain/kotlin/com/ketadev/foli/di/AppKoin.kt` separa la construcción de la lista de módulos (`foliModules`) del arranque (`startFoliKoin`): esa separación permite que producción y pruebas compartan exactamente la misma composición de módulos sin tocar el contexto global de Koin en las pruebas.
+
+`startFoliKoin` es una guarda idempotente: una segunda llamada del propio proceso de Foli devuelve la instancia ya iniciada sin reiniciar nada, y si Koin ya fue iniciado por un dueño ajeno (otra librería, un host de pruebas) lanza `IllegalStateException` en lugar de adoptar ese grafo en silencio. La comprobación usa `org.koin.mp.KoinPlatformTools.defaultContext()` (la API común multiplataforma; `GlobalContext` de `koin-core-jvm` no existe en `commonMain`). El único supuesto documentado es que el arranque ocurre en el hilo principal desde el dueño nativo antes de crear cualquier UI, por lo que la referencia al `KoinApplication` propio no usa sincronización adicional; si en el futuro aparece un segundo llamador legítimo fuera del hilo principal, esa guarda debe revisarse.
+
+Las pruebas de `shared` (`SharedLogicAndroidHostTest`, `SharedLogicIOSTest`) usan `koinApplication { modules(foliModules(platformModule)) }` para construir un grafo aislado, resolver `PlatformInfo` y cerrarlo, sin registrar nada en el contexto global; y usan `startFoliKoin` directamente (visibilidad `internal`, compartida entre los source sets de un mismo módulo Gradle) para probar el no-op de una segunda llamada y el error ante un Koin ajeno ya iniciado, restableciendo el estado global en cada `tearDown`.
+
+`core:platform` aporta el primer binding real de este grafo: la interfaz `PlatformInfo` (sin efectos secundarios) con `AndroidPlatformInfo` (`Build.VERSION.SDK_INT`) e `IosPlatformInfo` (`UIDevice.currentDevice`), usada únicamente para probar que el ensamblado por plataforma funciona; no representa todavía un contrato de dominio.
+
 ## Sugerencias de IA
 
 La interfaz `ActionSuggestionService` recibe solo el texto de la idea que el usuario decidió compartir y devuelve una propuesta editable. La acción se guarda únicamente tras aceptación del usuario. El resto del flujo funciona sin IA y sin conexión.
@@ -122,4 +132,6 @@ El criterio de arquitectura para cada paso es que la misma función compile y se
 
 ## Estado actual del repositorio
 
-Hoy `settings.gradle.kts` incluye únicamente `:androidApp` y `:shared`; `shared` contiene la pantalla de plantilla. Esta estructura documentada es el objetivo de la migración multimodular y no afirma que los módulos ya existan.
+`settings.gradle.kts` incluye `:androidApp`, `:shared` y los cinco módulos `:core:model`, `:core:data`, `:core:database`, `:core:designsystem` y `:core:platform`; ningún módulo `:feature:*` existe todavía. La dirección de dependencias implementada hasta FOLI-00 es `androidApp` / `iosApp` → `shared` → `core:model` + `core:data` + `core:database` + `core:designsystem` + `core:platform`, y `core:data` → `core:model` + `core:database`; `core:designsystem` y `core:platform` no dependen de ningún otro módulo `core`.
+
+`core:database` y `core:data` solo traen configurado Room/KSP, DataStore, Ktor y serialización (sin entidad, DAO, migración, repositorio ni llamada de red reales) para probar que compilan en Android e iOS; `core:designsystem` expone los tokens compilados y `FoliTheme`; `core:platform` expone `PlatformInfo` y sus adaptadores Android/iOS. `shared` sigue siendo la pantalla de plantilla del starter (`App.kt`, `Greeting`, `Platform` expect/actual) envuelta en `FoliTheme`, más el ensamblado de Koin (`di/AppKoin*.kt`) y el arranque nativo desde `FoliApplication` (Android) y `@main App.init()` (iOS). No hay todavía ninguna integración externa (Google Books, IA, sincronización) ni credenciales de servicio en el repositorio.
