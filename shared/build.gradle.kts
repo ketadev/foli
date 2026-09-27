@@ -71,6 +71,9 @@ kotlin {
             implementation(libs.kotlin.test)
             implementation(libs.koin.test)
         }
+        getByName("androidHostTest").dependencies {
+            implementation(libs.mockk)
+        }
     }
 }
 
